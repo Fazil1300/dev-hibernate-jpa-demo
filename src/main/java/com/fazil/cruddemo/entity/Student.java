@@ -10,7 +10,6 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
     @Column(name = "first_name")
     private String firstName;
 
@@ -24,7 +23,6 @@ public class Student {
     public Student() {
 
     }
-
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -54,6 +52,10 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
     }
 
     //define toString method

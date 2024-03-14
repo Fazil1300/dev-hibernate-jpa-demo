@@ -2,7 +2,10 @@ package com.fazil.cruddemo.dao;
 
 import com.fazil.cruddemo.entity.Student;
 import jakarta.persistence.EntityManager;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+@Repository
 public class StudentDAOImplementation implements StudentDAO{
     private EntityManager entityManager;
 
@@ -11,6 +14,7 @@ public class StudentDAOImplementation implements StudentDAO{
     }
 
     @Override
+    @Transactional
     public void save(Student student) {
         entityManager.persist(student);
     }
