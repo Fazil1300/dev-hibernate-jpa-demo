@@ -47,7 +47,7 @@ public class StudentDAOImplementation implements StudentDAO {
         TypedQuery<Student> typedQuery = entityManager.createQuery("FROM Student WHERE lastName=:theLastName", Student.class);
 
         //set query parameter
-        typedQuery.setParameter("theLastName",lastName);
+        typedQuery.setParameter("theLastName", lastName);
 
         //get result from the query
         List<Student> students = typedQuery.getResultList();
@@ -60,5 +60,17 @@ public class StudentDAOImplementation implements StudentDAO {
     @Transactional
     public void update(Student student) {
         entityManager.merge(student);
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudent(int id) {
+        try {
+            Student student = entityManager.find(Student.class, id);
+            entityManager.remove(student);
+        } catch (Exception e) {
+            System.out.println("Record of " + id + " was not found");
+        }
+
     }
 }
