@@ -24,13 +24,33 @@ public class CruddemoApplication {
             //savingMultipleStudent(studentDAO);
             //retrieveStudentByID(studentDAO);
             //retrieveAllStudents(studentDAO);
-            retrieveStudentByLastName(studentDAO);
+            //retrieveStudentByLastName(studentDAO);
+            updateStudent(studentDAO);
         };
+    }
+
+    private void updateStudent(StudentDAO studentDAO) {
+        //retrieve student by primary key id
+        int studentID = 1;
+        Student student = studentDAO.findByID(studentID);
+
+        //display student
+        System.out.println("student of an id " + studentID + " is " + student);
+
+        //set first name of a student object
+        student.setFirstName("Jhonny");
+
+        //update an student object
+        studentDAO.update(student);
+        System.out.println("Updated!!!");
+
+        //display updated student object
+        System.out.println("Updated Student : " + student);
     }
 
     private void retrieveStudentByLastName(StudentDAO studentDAO) {
         //get list of student object by last name
-        String lastName="Swift";
+        String lastName = "Swift";
         List<Student> studentList = studentDAO.findByLastName(lastName);
 
         //display the list of students
